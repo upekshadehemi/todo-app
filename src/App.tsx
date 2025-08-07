@@ -1,35 +1,35 @@
-import React, { useState } from "react";
 
-const name=[
-  "dehemi",
-  "malee",
-  "kasun",
-  "dehemi4",
-  "dehemi5",
-];
-const app = () => {
 
-const[randomName, setRandomName] = useState("");
-const addtodo = () => {
- 
-  const randomIndex = Math.floor(Math.random() * name.length);
-  setRandomName(name[randomIndex]);
-}
- const clearName = () => {
-    setRandomName(''); 
-  };
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import TodoApp from "./input";
+import Navbar from "./navbar";
+import RandomName from "./radomname";
 
+
+
+const App = () => {
+   
   
-return(
-  <div>
-    <h4>Random Name</h4>
-    <button onClick={addtodo}>Add</button>
-    <button onClick={clearName}>Clear</button>
+
+  return (
+
+    <div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/input" element={<TodoApp />} />
+           <Route path="/randomname" element={<RandomName />} />
+          
+          
+        </Routes>
+      </Router>
+      
+
      
-
-    {randomName && <p>Random Name: {randomName}</p>}
-  </div>
-  
-);
+    
+    </div>
+  );
 };
-export default app;
+
+export default App;
